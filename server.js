@@ -330,7 +330,7 @@ app.use("/carritos", carritosRouter)
 let options = { alias: { p: "port" }, default: { p: 8080 } }
 
 let args = minimist(process.argv.slice(2), options)
-const PORT = args.port
+const PORT = args.port || process.env.PORT
 
 
 
