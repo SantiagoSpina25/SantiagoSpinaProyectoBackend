@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/login">Proyecto Backend</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="/datos">Home</a>
+                <a class="nav-link" href="/productos">Productos</a>
+                <a class="nav-link" href="/carritos/640e3c27e56ada42be963d28">Carrito</a>
+            </div>
+            </div>
+        </div>
+</nav>
+<div class="container text-center my-3">
+    <div class="jumbotron" style="background-color: green;color: white;">
+        <h1>USER OK LOGIN!</h1>
+        <h2><i>Bienvenido {{datos.nombre}}</i></h2>
+        <img src="{{datos.foto}}" alt="{{datos.nombre}}" height="50" width="50">
+        <br>
+        <h3>Email: {{datos.email}}</h3>
+        <h4>visitas: {{contador}}</h4>
+        <button class="btn btn-danger my-5" onclick="location.href='/logout'">LOGOUT</button>
+    </div>
+</div>

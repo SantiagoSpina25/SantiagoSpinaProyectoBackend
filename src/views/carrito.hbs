@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/login">Proyecto Backend</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="/datos">Home</a>
+                <a class="nav-link" href="/productos">Productos</a>
+                <a class="nav-link" href="/carritos/640e3c27e56ada42be963d28">Carrito</a>
+            </div>
+            </div>
+        </div>
+</nav>
+<div class="container text-center my-3">
+    <div class="jumbotron" style="background-color: rgb(19, 64, 80);color: white;">
+        <h1>CARRITO</h1>
+        <h2>Tu id de carrito: {{carrito._id}}</h2>
+        {{!-- <h2>Tus productos en el carrito:</h2> --}}
+        {{!-- <ul>
+            <li>{{productos}}</li>
+        </ul> --}}
+        <button class="btn btn-success my-3" onclick ="{{realizarPedido}}">Realizar pedido</button>
+    </div>
+</div>
