@@ -9,6 +9,7 @@ import { generateHashPassword , verifyPass } from "./src/bcrypt.js"
 
 import productosRouter from "./src/routes/productosRouter.js"
 import carritosRouter from "./src/routes/carritosRouter.js"
+import productosFake from "./src/routes/fakerRouter.js"
 
 import dotenv from "dotenv"
 dotenv.config()
@@ -27,7 +28,7 @@ import { createTransport } from "nodemailer";
 
 /*----------- Base de datos -----------*/
 
-import ContenedorMongoDb from "./src/contenedores/ContenedorMongoDb.js"
+import ContenedorMongoDb from "./src/models/ContenedorMongoDb.js"
 
 export const usuariosDb = new ContenedorMongoDb("usuarios", {
         username: { type: String, required: true },
@@ -321,6 +322,7 @@ app.get('/randoms', async (req,res) => {
 
 
 app.use("/productos", productosRouter)
+app.use("/productos-faker", productosFake)
 app.use("/carritos", carritosRouter)
 
 /*============================[Servidor]============================*/
