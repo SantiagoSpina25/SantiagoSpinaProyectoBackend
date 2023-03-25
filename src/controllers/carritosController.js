@@ -1,4 +1,4 @@
-import ContenedorMongoDb from "../models/ContenedorMongoDb.js"
+import carritosDao from "../models/daos/index.js"
 import { productosDB } from '../controllers/productosController.js';
 
 
@@ -6,9 +6,7 @@ import { createTransport } from "nodemailer";
 import twilio from 'twilio'
 
 
-export const carritosDB = new ContenedorMongoDb("carritos", {
-    productos: {type: [], required: true}
-})
+export const carritosDB = carritosDao.carritosDao
 
 
 const getCarritosController = async (req,res)=>{
@@ -17,7 +15,9 @@ const getCarritosController = async (req,res)=>{
             res.json(carritos)
         })
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al listarAll()', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -166,7 +166,9 @@ const getCarritosControllerById = async (req,res)=>{
 
 
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al listarbyId()', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -182,7 +184,9 @@ const postCarritosController = async (req,res)=>{
         res.send("Carrito subido correctamente")
 
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al guardar', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -201,7 +205,9 @@ const putCarritosController = async (req,res)=>{
 
         res.send("Carrito actualizado correctamente")
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al actualizar:', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -209,10 +215,12 @@ const putCarritosController = async (req,res)=>{
 const deleteCarritosController = async (req,res)=>{
     try {
         let id = req.params.id
-        carritosDB.borrarItem(id)
+        carritosDB.borrarCarrito(id)
         res.send("Carrito eliminado correctamente")
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al borrar', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -221,7 +229,7 @@ const getProductosCarritoControllerById = async (req,res)=>{
        
         let id = req.params.id
 
-        const carrito = await carritosDB.listarItem(id).then((carrito)=>{
+        const carrito = await carritosDB.listarCarrito(id).then((carrito)=>{
             const carritoEncontrado = carrito.find(carrito => carrito._id == id)
             return carritoEncontrado
         })
@@ -232,7 +240,9 @@ const getProductosCarritoControllerById = async (req,res)=>{
         res.json(carritoConProductos)
 
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al listarbyId()', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -261,7 +271,9 @@ const postProductosACarritoController = async (req,res)=>{
 
         res.send("Producto subido al carrito correctamente")
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al guardar', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -289,7 +301,9 @@ const deleteProductoCarritoController = async (req,res)=>{
         res.send("Producto borrado del carrito correctamente")
     
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al borrar', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 

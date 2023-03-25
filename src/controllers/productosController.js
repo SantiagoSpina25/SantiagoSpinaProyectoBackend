@@ -1,14 +1,12 @@
-import ContenedorMongoDb from "../models/ContenedorMongoDb.js"
+import productosDao from "../models/daos/index.js"
 import { createdFakeProducts } from "../mocks/productos-fake.js"
 
 
+import CustomError from "../../classes/CustomError.class.js"
+import logger from "../../config/loggers.js"
 
-export const productosDB = new ContenedorMongoDb("productos", {
-    title: { type: String, required: true },
-    price: { type: Number, required: true },
-    thumbnail: { type: String, required: false },
-    stock: { type: Number, required: true }
-})
+
+export const productosDB = productosDao.productosDao
 
 const getProductosController = async (req, res)=>{
     try {
@@ -19,7 +17,9 @@ const getProductosController = async (req, res)=>{
             // res.render('productos-disponibles', { contador: req.user.contador, datos: datosUsuario })
         })
     } catch (error) {
-        console.log(`Error ${error}`)
+        const cuserr = new CustomError(500, 'Error al listarAll()', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -29,12 +29,14 @@ const getProductosControllerById = async (req,res)=>{
 
         let id = req.params.id
 
-        productosDB.listarItem(id).then((producto)=>{
+        productosDB.listarProducto(id).then((producto)=>{
             res.json(producto)
         })
 
     } catch (error) {
-        console.log(`Error ${error}`)
+        const cuserr = new CustomError(500, 'Error al listarbyId()', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -54,7 +56,9 @@ const postProductosController = async (req,res)=>{
         res.send("Producto subido correctamente")
 
     } catch (error) {
-        console.log(`Error ${error}`)
+        const cuserr = new CustomError(500, 'Error al guardar', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -75,7 +79,9 @@ const updateProductosController = async (req,res)=>{
         res.send("Producto actualizado correctamente")
 
     } catch (error) {
-        console.log(`Error ${error}`)
+        const cuserr = new CustomError(500, 'Error al actualizar:', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -83,11 +89,13 @@ const deleteProductosController = async (req,res)=>{
     try {
 
         let id = req.params.id
-        productosDB.borrarItem(id)
+        productosDB.borrarProducto(id)
         res.send("Producto eliminado correctamente")
 
     } catch (error) {
-        console.log(`Error ${error}`) 
+        const cuserr = new CustomError(500, 'Error al borrar', error);
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 
@@ -95,7 +103,9 @@ const fakeProductosController = async (req,res)=>{
     try {
         res.json(createdFakeProducts(10))
     } catch (error) {
-        console.log(`Error: ${error}`)
+        const cuserr = new CustomError(500, 'Error al crear productos con Faker', error)
+        logger.error(cuserr);
+        throw cuserr;
     }
 }
 

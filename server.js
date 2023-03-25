@@ -5,14 +5,12 @@ import express from "express"
 import session from "express-session"
 import exphbs from 'express-handlebars'
 import path from 'path'
-import { generateHashPassword , verifyPass } from "./src/bcrypt.js"
+import { generateHashPassword , verifyPass } from "./src/scripts/bcrypt.js"
 
 import productosRouter from "./src/routes/productosRouter.js"
 import carritosRouter from "./src/routes/carritosRouter.js"
 import productosFake from "./src/routes/fakerRouter.js"
 
-import dotenv from "dotenv"
-dotenv.config()
 import minimist from "minimist"
 
 import { fork } from "child_process"
@@ -28,7 +26,7 @@ import { createTransport } from "nodemailer";
 
 /*----------- Base de datos -----------*/
 
-import ContenedorMongoDb from "./src/models/ContenedorMongoDb.js"
+import ContenedorMongoDb from "./src/models/containers/ContenedorMongoDb.js"
 
 export const usuariosDb = new ContenedorMongoDb("usuarios", {
         username: { type: String, required: true },
@@ -329,12 +327,10 @@ app.use("/carritos", carritosRouter)
 
 
 /*----------- Minimist -----------*/
-let options = { alias: { p: "port" }, default: { p: 8080 } }
+let options = { alias: { p: "port"}, default: { p: 8080 } }
 
 let args = minimist(process.argv.slice(2), options)
-const PORT = args.port || process.env.PORT
-
-
+const PORT = args.port 
 
 const server = httpServer.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
@@ -342,4 +338,3 @@ const server = httpServer.listen(PORT, () => {
 server.on('error', error => {
     console.error(`Error en el servidor ${error}`);
 });
-
