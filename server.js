@@ -6,6 +6,8 @@ import session from "express-session"
 import exphbs from 'express-handlebars'
 import path from 'path'
 import { generateHashPassword , verifyPass } from "./src/scripts/bcrypt.js"
+import logger from "./config/loggers.js"
+import CustomError from "./classes/CustomError.class.js"
 
 import productosRouter from "./src/routes/productosRouter.js"
 import carritosRouter from "./src/routes/carritosRouter.js"
@@ -333,8 +335,10 @@ let args = minimist(process.argv.slice(2), options)
 const PORT = args.port 
 
 const server = httpServer.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
+    logger.info(`Servidor escuchando en el puerto ${PORT}`)
 })
 server.on('error', error => {
-    console.error(`Error en el servidor ${error}`);
+    const cuserr = new CustomError(500, '`Error en el servidor', error);
+    logger.error(cuserr);
+    throw cuserr;
 });
