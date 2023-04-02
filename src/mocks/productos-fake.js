@@ -14,10 +14,8 @@ function createFakeProduct(id) {
     const prod = {
         title: faker.commerce.product(),
         price: faker.commerce.price(),
-        thumbnail: `${faker.image.imageUrl()}?${isNaN(id) ? 1 : id}`
-    }
-    if (id) {
-        prod.id = id
+        thumbnail: `url`,
+        stock: Math.round(Math.random()*30)
     }
     return prod
 }

@@ -342,3 +342,5 @@ server.on('error', error => {
     logger.error(cuserr);
     throw cuserr;
 });
+
+export default app

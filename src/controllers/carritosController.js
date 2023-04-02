@@ -2,8 +2,12 @@ import carritosDao from "../models/daos/index.js"
 import { productosDB } from '../controllers/productosController.js';
 
 
+
+
 import { createTransport } from "nodemailer";
 import twilio from 'twilio'
+import CustomError from "../../classes/CustomError.class.js";
+import logger from "../../config/loggers.js";
 
 
 export const carritosDB = carritosDao.carritosDao
@@ -27,7 +31,7 @@ const getCarritosControllerById = async (req,res)=>{
 
         let id = req.params.id
 
-        const carrito = await carritosDB.listarItem(id).then((carrito)=>{
+        const carrito = await carritosDB.listarCarrito(id).then((carrito)=>{
             const carritoEncontrado = carrito.find(carrito => carrito._id == id)
             return carritoEncontrado
         })
