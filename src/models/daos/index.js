@@ -1,5 +1,3 @@
-// import DataBaseFactory from '../classes/DataBaseFactory.js'
-
 /*----------- Minimist -----------*/
 import minimist from 'minimist'
 
@@ -15,12 +13,6 @@ const dbElegida = args.db
 let productosDao
 let carritosDao
 
-// const factory = new DataBaseFactory()
-
-// const db = factory.createDataBase(dbElegida)
-
-
-// console.log(db.dbElegida())
 
 switch (dbElegida) {
 

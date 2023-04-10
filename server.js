@@ -25,6 +25,10 @@ import compression from "compression"
 
 import { createTransport } from "nodemailer";
 
+//Graphql
+import { graphqlHTTP } from 'express-graphql';
+import { ProductoSchema } from "./graphql/schema.js"
+import { obtenerProductos, obtenerProducto, crearProducto, actualizarProducto, borrarProducto } from "./graphql/resolvers.js"
 
 /*----------- Base de datos -----------*/
 
@@ -324,6 +328,18 @@ app.get('/randoms', async (req,res) => {
 app.use("/productos", productosRouter)
 app.use("/productos-faker", productosFake)
 app.use("/carritos", carritosRouter)
+
+app.use('/graphql', graphqlHTTP({
+    schema: ProductoSchema,
+    rootValue: {
+        obtenerProductos,
+        obtenerProducto,
+        crearProducto,
+        actualizarProducto,
+        borrarProducto
+    },
+    graphiql: true,
+}));
 
 /*============================[Servidor]============================*/
 
