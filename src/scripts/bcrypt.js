@@ -1,3 +1,6 @@
+
+/*============================[Modulos]============================*/
+
 import bcrypt from 'bcrypt'
 
 
@@ -10,7 +13,6 @@ async function generateHashPassword(password) {
 
 async function verifyPass(userPassword, password) {
     const match = await bcrypt.compare(password, userPassword)
-    // console.log(`pass login: ${password} || pass hash: ${userPassword}`)
     return match
 }
 

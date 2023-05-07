@@ -1,3 +1,6 @@
+
+/*============================[Modulos]============================*/
+
 import { Router } from 'express'
 import { fakeProductosController } from '../controllers/productosController.js'
 

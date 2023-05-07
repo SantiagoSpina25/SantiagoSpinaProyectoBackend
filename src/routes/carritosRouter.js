@@ -16,6 +16,7 @@ import {
 
 import { isAuth } from '../../server.js';
 
+
 const carritosRouter = new Router()
 
 
@@ -24,12 +25,12 @@ const carritosRouter = new Router()
 
 //Obtener todos los carritos
 
-carritosRouter.get("/", isAuth, getCarritosController)
+carritosRouter.get("/", getCarritosController)
 
 
 //Obtener un carrito por su ID
 
-carritosRouter.get("/:id", isAuth , getCarritosControllerById)
+carritosRouter.get("/:id", isAuth, getCarritosControllerById)
 
 
 //Subir un carrito
@@ -49,7 +50,7 @@ carritosRouter.delete("/:id", deleteCarritosController)
 
 //Obtener los productos de un carrito por su ID 
 
-carritosRouter.get('/:id/productos', isAuth, getProductosCarritoControllerById)
+carritosRouter.get('/:id/productos', getProductosCarritoControllerById)
 
 
 //Subir productos a un carrito

@@ -7,12 +7,10 @@ export default {
         NODE_ENV: process.env.NODE_ENV
     },
     mongodb: {
-        cnxStr: 'mongodb+srv://SantiagoS25:2qKCGRW9753xqyjD@clustercoderhousebacken.cdkg6du.mongodb.net/ProyectoBackend-SantiagoSpina',
+        cnxStr: 'mongodb+srv://SantiagoS25:DorYX1wV1jFge3Nq@clustercoderhousebacken.cdkg6du.mongodb.net/ProyectoBackend-SantiagoSpina',
         options: {
             useNewUrlParser: true,
-            useUnifiedTopology: true,
-            // useCreateIndex: true,
-            // serverSelectionTimeoutMS: 5000,
+            useUnifiedTopology: true
         }
     }
 }

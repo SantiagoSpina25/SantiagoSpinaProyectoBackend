@@ -8,42 +8,55 @@
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="/datos">Home</a>
                 <a class="nav-link" href="/productos">Productos</a>
-                <a class="nav-link" href="/carritos/640e3c27e56ada42be963d28">Carrito</a>
+                <a class="nav-link" href="/carritos/{{datos.carritoId}}">Carrito</a>
+                <a class="nav-link" href="/chat">Chat</a>
             </div>
             </div>
         </div>
 </nav>
 <div class="container text-center my-3">
-    <div class="jumbotron" style="background-color: rgb(141, 205, 215);color: white;">
+    <div class="jumbotron" style="background-color: rgb(77, 78, 85);color: white;">
         <h1>Productos:</h1>
-            <table class="table table-primary">
+            <table class="table table-dark">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Producto</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Foto</th>
                     </tr>
                 </thead>
                 <tbody>
+                {{#each productos}}
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row"><button type="button" class="btn btn-light" onclick="addProduct(`{{this._id}}`)">Añadir al carrito</button></th>
+                    <td>{{this.title}}</td>
+                    <td>${{this.price}}</td>
+                    <td>{{thumbnail}}</td>
                     </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                {{/each}}
                 </tbody>
-                </table>
+            </table>
     </div>
 </div>
+
+<script>
+
+    const socket = io.connect()
+
+    function addProduct(prod_id){
+
+        const data = {
+            prod_id: prod_id,
+            carritoId: `{{datos.carritoId}}`
+        }
+
+        alert("Producto añadido al carrito!")
+
+
+        socket.emit("newAddedProduct", data)
+    }
+
+   
+    
+</script>

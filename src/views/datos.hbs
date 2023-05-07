@@ -8,7 +8,8 @@
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="/datos">Home</a>
                 <a class="nav-link" href="/productos">Productos</a>
-                <a class="nav-link" href="/carritos/640e3c27e56ada42be963d28">Carrito</a>
+                <a class="nav-link" href="/carritos/{{datos.carrito}}">Carrito</a>
+                <a class="nav-link" href="/chat">Chat</a>
             </div>
             </div>
         </div>
@@ -20,7 +21,6 @@
         <img src="{{datos.foto}}" alt="{{datos.nombre}}" height="50" width="50">
         <br>
         <h3>Email: {{datos.email}}</h3>
-        <h4>visitas: {{contador}}</h4>
         <button class="btn btn-danger my-5" onclick="location.href='/logout'">LOGOUT</button>
     </div>
 </div>

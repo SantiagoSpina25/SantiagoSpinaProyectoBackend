@@ -1,3 +1,6 @@
+
+/*============================[Modulos]============================*/
+
 import ContenedorMongoDb from "../../containers/ContenedorMongoDb.js"
 
 
@@ -5,7 +8,11 @@ class CarritosDaoMongoDb extends ContenedorMongoDb {
 
     constructor() {
         super("carritos", {
-            productos: {type: [], required: true}
+            email: {type: String, required: true},
+            timestamp: {type: Number, required: true},
+            products: {type: [], required: true},
+            adress: {type: String, required: true}
+
         })
     }
 
@@ -19,10 +26,20 @@ class CarritosDaoMongoDb extends ContenedorMongoDb {
         }
     }
 
-    async actualizarCarrito(id, newCart){
-        const {productos} = newCart
+    async listarCarritoByEmail(email){
+        const readItem = await this.coleccion.find({ "email": email })
+        if (readItem.length == 0){
+            throw new Error('No se encontro el carrito')
+        }
+        else{
+            return readItem
+        }
+    }
 
-        const updateCart = await this.coleccion.replaceOne({"_id": id},{productos: productos})
+    async actualizarCarrito(id, newCart){
+        const {email, timestamp, products, adress} = newCart
+
+        const updateCart = await this.coleccion.replaceOne({"_id": id},{email: email, timestamp: timestamp, products: products, adress: adress})
         return updateCart
     }
 

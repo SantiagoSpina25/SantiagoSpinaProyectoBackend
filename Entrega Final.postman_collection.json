@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "05741fa6-7f92-4b61-a777-5f8a36bfb5ec",
+		"name": "Entrega Final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24384872"
+	},
+	"item": [
+		{
+			"name": "Mensajes",
+			"item": [
+				{
+					"name": "GET-MENSAJES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBYMAIL-MENSAJES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chat/santiagospina025@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"santiagospina025@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-MENSAJES",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"lionelMessi@gmail.com\",\r\n    \"type\": \"user\",\r\n    \"timestamp\": 2323244323434,\r\n    \"message\": \"Bien\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE-MENSAJES",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/chat/644d3439edc1e105f06b486d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"644d3439edc1e105f06b486d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "GET-PRODUCTOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/muebles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"muebles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBYID-PRODUCTOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/640e3beee56ada42be963d21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"640e3beee56ada42be963d21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-BY-CATEGORY-PRODUCTOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/comida",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"comida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-PRODUCTOS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Computadora\",\r\n    \"price\": 300,\r\n    \"thumbnail\": \"url\",\r\n    \"category\": \"Informatica\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT-PRODUCTOS",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dolar blue\",\r\n    \"price\": 450,\r\n    \"thumbnail\": \"url\",\r\n    \"stock\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/productos/644d37e654fbacd416f44c3a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"644d37e654fbacd416f44c3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE-PRODUCTOS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/644d37e654fbacd416f44c3a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"644d37e654fbacd416f44c3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PRODUCTOS-FAKER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos-faker",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos-faker"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carritos",
+			"item": [
+				{
+					"name": "Productos en carrito",
+					"item": [
+						{
+							"name": "GET-PRODUCTOS DEL CARRITO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/carritos/644e478a6e15b5547be8ac67/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"carritos",
+										"644e478a6e15b5547be8ac67",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST-PRODUCTOS A CARRITO",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"644d43fa61f87b90c41e4ebf\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/carritos/644e478a6e15b5547be8ac67",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"carritos",
+										"644e478a6e15b5547be8ac67"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE- PRODUCTOS DEL CARRITO",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/carritos/644e478a6e15b5547be8ac67/productos/644d43ee61f87b90c41e4ebd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"carritos",
+										"644e478a6e15b5547be8ac67",
+										"productos",
+										"644d43ee61f87b90c41e4ebd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET-CARRITOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/carritos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carritos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBYID-CARRITOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/carritos/644e478a6e15b5547be8ac67",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carritos",
+								"644e478a6e15b5547be8ac67"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-CARRITOS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"a@gmail.com\",\r\n    \"timestamp\": 16828516645,\r\n    \"products\": [],\r\n    \"adress\": \"Calle 5, piso 1b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/carritos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carritos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT-CARRITOS",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jorge@gmail.com\",\r\n    \"timestamp\": 16828516643,\r\n    \"products\": [],\r\n    \"adress\": \"Calle 10, piso 4b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/carritos/644e4858dcbb71f7f0f28481",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carritos",
+								"644e4858dcbb71f7f0f28481"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE-CARRITOS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/carritos/644e4858dcbb71f7f0f28481",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carritos",
+								"644e4858dcbb71f7f0f28481"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ordenes",
+			"item": [
+				{
+					"name": "GET-ORDENES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ordenes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-ORDENES",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n        \"_id\": \"644d440761f87b90c41e4ec1\",\r\n        \"title\": \"Mesa\",\r\n        \"price\": 80,\r\n        \"thumbnail\": \"url\",\r\n        \"category\": \"muebles\",\r\n        \"__v\": 0\r\n        }\r\n        ],\r\n    \"orderNumber\": 1,\r\n    \"date\": 23432422,\r\n    \"state\": \"generada\",\r\n    \"email\": \"san@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ordenes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBYID-ORDENES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ordenes/645687a541f89766b292321f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordenes",
+								"645687a541f89766b292321f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT-ORDENES",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n        \"_id\": \"644d440761f87b90c41e4ec1\",\r\n        \"title\": \"Mesa\",\r\n        \"price\": 80,\r\n        \"thumbnail\": \"url\",\r\n        \"category\": \"muebles\",\r\n        \"__v\": 0\r\n        }\r\n        ],\r\n    \"orderNumber\": 1,\r\n    \"date\": 234324225,\r\n    \"state\": \"generada\",\r\n    \"email\": \"santiagospina025@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ordenes/645687a541f89766b292321f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordenes",
+								"645687a541f89766b292321f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE-ORDENES",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ordenes/645687a541f89766b292321f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordenes",
+								"645687a541f89766b292321f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

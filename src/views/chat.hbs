@@ -1,0 +1,94 @@
+<style>
+.divContainer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    align-items: center;
+}
+.bgBox{
+    background-color: #D6E4E5;
+    word-wrap: break-word;
+    width: 70%;
+    padding: 1rem;
+    border-radius: 10px;
+}
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/login">Proyecto Backend</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="/datos">Home</a>
+                <a class="nav-link" href="/productos">Productos</a>
+                <a class="nav-link" href="/carritos/{{datos.carritoId}}">Carrito</a>
+                <a class="nav-link" href="/chat">Chat</a>
+            </div>
+            </div>
+        </div>
+</nav>
+<div class="container-sm text-center ">
+    <div class="jumbotron" style="background-color: rgb(26, 94, 150);color: white;">
+        <h1>CHAT</h1>
+    </div>
+
+</div>
+    <div class="container divContainer" id="messageContainer">
+
+        <h3>Mensajes:</h3>
+
+        {{#each messages}}
+            <h3><strong>{{this.email}}</strong> :  {{this.message}}</h3>
+        {{/each}}
+
+    {{!-- Formulario para mandar mensajes --}}
+    <form onsubmit="return addMessage(this)">
+
+        <div class="input-group mb-3">
+            <input type="text" id="email" class="form-control" placeholder="Nombre">
+            <input type="text" id="messageInput" class="form-control" placeholder="Mensaje...">
+        </div>
+
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+            <!-- icono -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+            </svg>
+            Enviar
+        </button>
+
+
+    </form>
+    </div>
+
+
+
+<script>
+
+
+    const socket = io.connect()
+
+    function addMessage(){
+        const email = document.getElementById("email").value
+        const message = document.getElementById("messageInput").value
+
+        let fecha = new Date()
+        const timestamp = fecha.getTime()
+        
+        const newMessage = {
+            email: email,
+            type: "user",
+            date: timestamp,
+            message: message
+        }
+
+
+        socket.emit("newMessage", newMessage)
+
+        return false
+    }
+    
+</script>
