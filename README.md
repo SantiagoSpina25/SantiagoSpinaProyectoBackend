@@ -12,3 +12,5 @@ Hola! Subo este readme para aclarar un par de cosas por las dudas
     NODE_ENV='development'
     PORT=8080
  
+
+- última cuestión, intenté de todas las maneras que pude subir el proyecto a Render, heroku y Railway y en ninguna de las 3 me dejó subirlo. Seguramente algo estoy pasando por alto y no lo estoy entendiendo.
